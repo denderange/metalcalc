@@ -1,0 +1,49 @@
+html{
+	box-sizing: border-box;
+}
+
+*, *::before, *::after{
+	box-sizing: inherit;
+	padding: 0;
+	margin: 0;
+}
+
+html, body, #root{
+	width: 100%;
+	height: 100%;
+}
+
+body{
+	/* background-color: var(--color-white);
+	font: var(--middle-regular);
+	color: var(--color-river-bed); */
+}
+
+ul{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
+button{
+	border: none;
+	cursor: pointer;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+	margin: 0;
+}
+
+input:focus{
+	outline: none;
+}
+
+.img{
+	max-width: 100%;
+}

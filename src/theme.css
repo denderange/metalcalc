@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica&family=Play:wght@700&display=swap');
+
+:root {
+	/* colors */
+	--color-black: #000;
+	--color-white: #fff;
+
+	--color-y-100: #FFFFC1;
+	--color-y-200: #fdfdd3;
+	--color-y-300: #fcd34d;
+	--color-y-400: #ffa600;
+	
+	/* fonts */
+	--font-geologica: font-family: 'Geologica', sans-serif;
+	--font-play: font-family: 'Play', sans-serif;
+
+	--text-bold: 700 30px / 140% var(--font-play);
+  --text-regular: 400 16px / 140% var(--font-play);
+}

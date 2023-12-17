@@ -1,0 +1,52 @@
+{
+	"Калькулятор металлопроката": "Metal calculator",
+
+	"kindProduct": {
+		"балка (двутавр)": "balk",
+		"лист": "sheet",
+		"труба круглая": "pipe round",
+		"труба профильная": "profile pipe",
+		"уголок": "corner",		
+		"квадрат": "square",
+		"круг (пруток)": "circle",
+		"лента (полоса)": "ribbon",
+		"шестигранник": "hexahedron",
+		"швеллер": "channel"
+
+	},
+
+	"kindMetal": {
+		"черный": "black",
+		"нержавейка":	"stainless steel",
+		"алюминий":	"aluminum",
+		"медь":	"copper",
+		"латунь":	"brass"
+	},
+
+	"formCalculation":{
+		"внешний диаметр": "diameter",
+		"длина": "length",
+		"длина изделия": "length",
+		"ширина": "width",
+		"ширина стороны": "width",
+		"высота": "height",
+		"толщина": "thickness",
+		"толщина стенки": "wall thickness",
+		"толщина перемычки": "lintel thickness",
+		"толщина полок": "shelf thickness",
+		"количество": "quantity",
+		"номер (диаметр) - a": "diameter",
+		"Вес": "Weight",
+		"кг": "kg",
+		"Рассчитать": "Calculate",
+		"Результат": "The result"
+	},
+
+	"Параметры расчёта": "Calculation parameters",
+	"изделие": "product",
+	"материал": "material",
+	"не выбрано": "not chosen",
+	"мм": "mm",
+	"шт": "pcs",
+	"Выберите вид проката": "Select the type of metal"
+}
