@@ -3,7 +3,7 @@
   "private": true,
   "version": "3.17.12.23",
   "type": "module",
-	"author": "Dennis Polukaroff", 
+  "author": "Dennis Polukaroff", 
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

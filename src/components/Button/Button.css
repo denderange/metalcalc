@@ -1,0 +1,89 @@
+.btn-header{
+	background-color: var(--color-y-300);
+	color: var(--color-y-800);
+	border: 1px solid var(--color-y-700);
+	border-radius: 8px;
+	padding: 4px 20px;
+	transition: all 0.3s ease-in-out;
+}
+
+.btn-header:hover{
+	background-color: var(--color-y-210);
+	color: var(--color-y-600);
+	border-color: var(--color-y-600);
+}
+
+.btn-product{
+	font-size: 14px;
+	margin-top: 4px;
+	border: 1px solid var(--color-y-300);
+	background-color: var(--color-y-230);
+	width: 100%;
+	text-align: left;
+	padding: 4px 10px;
+	transition: all 0.3s ease;
+}
+
+.btn-product:hover{
+	background-color: var(--color-y-300);
+	color: var(--color-y-700);
+	transform: translateX(8px);
+}
+
+.btn-product-active{
+	color: var(--color-y-700);
+	border-color: var(--color-y-530);
+	background-color: var(--color-y-300);
+	transform: translateX(8px);
+	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.3); 
+}
+
+.btn-metal{
+	color: var(--color-grey-500);
+	border: 1px solid var(--color-y-300);
+	background-color: var(--color-y-230);
+	padding: 8px 20px;
+	transition: all 0.3s ease-in-out;
+}
+
+.btn-metal:hover{
+	background-color: var(--color-y-300);
+	color: var(--color-y-700);
+}
+
+.btn-metal-active{
+	color: var(--color-y-700);
+	border-color: var(--color-y-530);
+	background-color: var(--color-y-300);
+	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+}
+
+.btn-calculate{
+	display: block;
+	padding: 10px 10px;
+	width: 60%;
+	margin: 20px auto 4px;
+	color: var(--color-y-800);
+	background-color: var(--color-y-300);
+	border: 1px solid var(--color-y-410);
+	border-radius: 8px;
+	transition: all 0.3s ease-in-out;
+}
+
+.btn-calculate:hover{
+	background-color: var(--color-y-210);
+	color: var(--color-y-600);
+	border-color: var(--color-y-600);
+}
+
+.btn-disabled{
+	color: var(--color-font-light);
+	background-color: var(--color-grey-100);
+	border: 1px solid var(--color-grey-200);
+	border-radius: 8px;
+	padding: 10px 10px;
+	width: 60%;
+	margin: 20px auto 4px;
+	display: block;
+	cursor: not-allowed;
+}

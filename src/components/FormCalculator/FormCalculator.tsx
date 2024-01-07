@@ -4,6 +4,7 @@ import { formFieldGenerator } from '../formFieldsGenerator/formFieldsGenerator';
 import { useTranslation } from 'react-i18next'
 import { applyFormulas } from '../../utils/formulas';
 import styles from './FormCalculator.module.css'
+import Button from '../Button/Button';
 
 type Props = {
 	productKind: string, // Вид изделия (наименование): труба, арматура и т.д
@@ -64,48 +65,40 @@ const FormCalculator = ({ productKind, productMetal }: Props) => {
 	}, [productKind, productMetal])
 
 	return (
-		<div className='flex grow'>
-			<form
-				onSubmit={onSubmit}
-				className={`mt-5 flex flex-col flex-grow justify-between`}
-			>
+		<form
+			onSubmit={onSubmit}
+			className={styles["form-calc"]}
+		>
 
-				{/* function to create corresponding form fields : */}
+			<div className={styles["form-calc__inputs"]}>
 				{formFieldGenerator(productKind, errors, register)}
+			</div>
 
-				<div className='flex flex-col'>
-					<h4 className='border-t mt-5 pt-2 text-center font-semibold text-l text-gray-600 leading-5'>
-						{t('formCalculation.Результат')}:
-					</h4>
-					<div className='w-full py-1 px-4 mt-3 border border-gray-300 flex items-center flex-row justify-between bg-white shadow-md'>
-						<div className='font-semibold text-slate-800'>
-							{t('formCalculation.Вес')} :
-						</div>
-						<div className='font-semibold text-slate-800 text-lg'>{theResult}
-							<span className='text-sm'>{' '}
-								{t('formCalculation.кг')}.
-							</span>
-						</div>
+			<div className={styles["form-calc__result"]}>
+				<h4 className={styles["form-calc__result-title"]}>
+					{t('formCalculation.Результат')}:
+				</h4>
+
+				<div className={styles["show-result"]}>
+					<div className={styles["show-result__weight"]}>
+						{t('formCalculation.Вес')} :
 					</div>
-
-					<div className='text-center'>
-						<button
-							type="submit"
-							disabled={!buttonEnabled}
-							className={`${buttonEnabled ?
-								'bg-amber-400 border-orange-400 hover:bg-amber-300 hover:border-orange-300 transition duration-300 text-orange-900 hover:text-orange-600'
-								:
-								'bg-slate-200 rounded-md border border-slate-300 text-slate-400 cursor-not-allowed'
-								} 
-									font-bold rounded-md border px-4 py-1 w-3/4 mt-5`
-							}>
-							{t('formCalculation.Рассчитать')}
-						</button>
+					<div>{theResult}
+						<span className={styles["show-result__span"]}>{' '}
+							{t('formCalculation.кг')}.
+						</span>
 					</div>
 				</div>
 
-			</form>
-		</div >
+				<Button
+					// styleClasses={"btn-calculate"}
+					styleClasses={buttonEnabled ? "btn-calculate" : "btn-disabled"}
+					text={t('formCalculation.Рассчитать')}
+					type="submit"
+					disabled={!buttonEnabled}
+				/>
+			</div>
+		</form>
 	)
 }
 

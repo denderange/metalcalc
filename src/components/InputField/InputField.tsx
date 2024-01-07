@@ -13,10 +13,10 @@ const InputField = ({ name, label, register, errors, type }: Props) => {
 	const { t } = useTranslation()
 
 	return (
-		<div className={styles[""]}>
+		<div className={styles["param-input-container"]}>
 			<label
 				htmlFor={name}
-				className={styles[""]}
+				className={styles["param-input-label"]}
 			>
 				{label}
 			</label>
@@ -31,9 +31,9 @@ const InputField = ({ name, label, register, errors, type }: Props) => {
 					minLength: 1,
 					required: true,
 				})}
-				className={`${errors[name] ? styles[""] : null} ${styles[""]}`}
+				className={`${errors[name] ? styles["input-error"] : null} ${styles["param-input"]}`}
 			/>
-			<span className={styles[""]}>
+			<span className={styles["param-input-span"]}>
 				{name !== 'quantity' ? `${t('мм')}` : `${t('шт')}`}
 			</span>
 		</div>

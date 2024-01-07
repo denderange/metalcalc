@@ -1,0 +1,19 @@
+.footer{
+	text-align: right;
+	line-height: 0.5;
+}
+
+.footer__title{
+	font-size: 12px;
+	color: var(--color-font-light);
+}
+
+.footer__link{
+	font-size: 14px;
+	color: var(--color-y-410);
+	transition: all 0.3s ease-in-out;
+}
+
+.footer__link:hover{
+	color: var(--color-y-500);
+}

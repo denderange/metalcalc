@@ -1,0 +1,6 @@
+.text-important{
+	color: var(--color-y-500);
+	text-align: center;
+	padding: 10px;
+	font-size: 18px;
+}

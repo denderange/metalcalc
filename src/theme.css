@@ -2,18 +2,36 @@
 
 :root {
 	/* colors */
-	--color-black: #000;
+	--color-black: #272727;
 	--color-white: #fff;
+	--color-grey-100: #dadada;
+	--color-grey-200: #c5c3c3;
+	--color-grey-500: #707070;
+	
+	--color-bg: #feffea;
+	--color-font: #444444;
+	--color-font-light: #949494;
 
 	--color-y-100: #FFFFC1;
 	--color-y-200: #fdfdd3;
+	--color-y-210: #ffe181;
+	--color-y-220: #fff5ce;
+	--color-y-230: #ffeb9d;
 	--color-y-300: #fcd34d;
 	--color-y-400: #ffa600;
+	--color-y-410: #d88c00;
+	--color-y-500: #ff5100;
+	--color-y-510: #d64400;
+	--color-y-520: #e0b984;
+	--color-y-530: #d68000;
+	--color-y-600: #c53e00;
+	--color-y-700: #912e01;
+	--color-y-800: #692100;
 	
 	/* fonts */
-	--font-geologica: font-family: 'Geologica', sans-serif;
-	--font-play: font-family: 'Play', sans-serif;
+	--font-geologica: 'Geologica', sans-serif;
+	--font-play: 'Play', sans-serif;
 
-	--text-bold: 700 30px / 140% var(--font-play);
-  --text-regular: 400 16px / 140% var(--font-play);
+	--text-bold: 700 24px / 140% var(--font-play);
+  --text-regular: 400 16px / 120% var(--font-geologica);
 }

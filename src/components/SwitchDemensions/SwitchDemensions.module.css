@@ -1,0 +1,40 @@
+.switch-label{
+	cursor: pointer;
+	margin-left: 20px;
+	padding: 3px 0;
+	border: 1px solid var(--color-y-700);
+	border-radius: 6px;
+	background-color: var(--color-y-300);
+}
+
+.switch-label input + span{
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+}
+
+.switch-label span:last-child{
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border-left: 1px solid var(--color-y-700);
+}
+
+.switch-input{
+	width: 0px;
+	height: 0px;
+	display: none;
+}
+
+.switch-span{
+	position: relative;
+	top: -1px;
+	font-size: small;
+	padding: 3px 8px;
+	color: var(--color-grey-200);
+	background-color: var(--color-y-230);
+	transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.switch-span.switch-span--active{
+	color: var(--color-y-800);
+	background-color: var(--color-y-300);
+}

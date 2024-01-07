@@ -1,0 +1,26 @@
+.param-input-container{
+	margin-bottom: 10px;
+	text-align: right;
+}
+
+.param-input{
+	border: 1px solid var(--color-y-520);
+	width: 20%;
+	padding: 2px 8px;
+	margin-left: 30px;
+	margin-right: 8px;
+}
+
+.param-input-label{
+	color: var(--color-y-800);
+	font-size: 14px;
+}
+
+.param-input-span{
+	color: var(--color-grey-500);
+	font-size: 14px;
+}
+
+.input-error{
+	border: 1px solid var(--color-y-510);
+}

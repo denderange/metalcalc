@@ -1,15 +1,19 @@
 import { useState, MouseEvent } from 'react'
+import Footer from '../../components/Footer/Footer'
+import Button from '../../components/Button/Button'
+import FormCalculator from '../../components/FormCalculator/FormCalculator'
 import { catalogue } from '../../utils/catalogue'
 import product from '../../locales/ru.json'
 import { useTranslation } from 'react-i18next'
-// import FormCalculator from '../components/FormCalculator'
 import styles from './Calculator.module.css'
+import SwitchDemensions from '../../components/SwitchDemensions/SwitchDemensions'
 
 const Calculator = () => {
 	const { t, i18n } = useTranslation()
 	const [language, setLanguage] = useState('en')
 	const [currentProduct, setCurrentProduct] = useState('')
 	const [currentMetal, setCurrentMetal] = useState('')
+	const [checked, setChecked] = useState("millimeters");
 	const [imgLink, setImgLink] = useState<string>(catalogue['imgDefault'].image)
 	const amountMetalKind: number = Object.keys(product.kindMetal).length
 
@@ -31,40 +35,43 @@ const Calculator = () => {
 		setCurrentProduct(e.currentTarget.id)
 
 		const activeProduct: (HTMLElement | null) = document.getElementById(currentProduct)
-		activeProduct?.classList.remove('isActiveProduct')
-		e.currentTarget.classList.add('isActiveProduct')
+		activeProduct?.classList.remove('btn-product-active')
+		e.currentTarget.classList.add('btn-product-active')
 	}
 
 	const handleSetCurrentMetal = (e: MouseEvent<HTMLButtonElement>): void => {
 		setCurrentMetal(e.currentTarget.id)
 
 		const activeMetal: (HTMLElement | null) = document.getElementById(currentMetal)
-		activeMetal?.classList.remove('isActiveMetal')
-		e.currentTarget.classList.add('isActiveMetal')
+		activeMetal?.classList.remove('btn-metal-active')
+		e.currentTarget.classList.add('btn-metal-active')
 	}
-	return (
-		<div className={styles[""]}>
 
-			<header className={styles[""]}>
-				<button className={styles[""]}
-					onClick={() => handleSwitchLanguage(language)}
-				>
-					{language.toUpperCase()}
-				</button>
-				<h1 className={styles[""]}>
+	return (
+		<div className={"wrapper"}>
+			<header className={styles["header"]}>
+				<div className={styles["header_buttons"]}>
+					<Button
+						styleClasses="btn-header"
+						text={language.toUpperCase()}
+						handleClick={() => handleSwitchLanguage(language)}
+					/>
+					<SwitchDemensions />
+				</div>
+				<h1 className={styles["header__title"]}>
 					{t('Калькулятор металлопроката')}
 				</h1>
 			</header>
 
-			<div className={styles[""]}>
+			<main className={`${styles["container"]} ${styles["calc-container"]}`}>
 
 				{/* LEFT MENU AND IMAGES : */}
-				<div className={styles[""]}>
-					<div className={styles[""]}>
+				<section className={styles["section-nav"]}>
+					<div className={styles["section-nav__image-container"]}>
 						<img
 							src={imgLink}
 							alt={currentProduct ? catalogue[currentProduct].alt : 'img'}
-							className={styles[""]}
+							className={styles["section-nav__image"]}
 						/>
 					</div>
 
@@ -72,98 +79,80 @@ const Calculator = () => {
 						<ul>
 							{Object.keys(product.kindProduct).map(item => (
 								<li key={item}>
-									<button
-										className={styles[""]}
+									<Button
+										styleClasses="btn-product"
 										id={item}
-										onClick={handleSetCurrentProduct}
-									>
-										{t(`kindProduct.${item}`)}
-									</button>
+										text={t(`kindProduct.${item}`)}
+										handleClick={handleSetCurrentProduct}
+									/>
 								</li>
 							))}
 						</ul>
 					</nav>
-				</div>
+				</section>
 
 				{/* RIGHT SIDE : */}
-				<div className={styles[""]}>
-					<nav>
-						<ul
-							className={`grid grid-flow-col grid-cols-${amountMetalKind} gap-1 text-center`}
-						>
+				<section className={styles["content"]}>
+					<nav className={styles["content__nav"]}>
+						<ul className={styles["content__nav__list"]}>
 							{Object.keys(product.kindMetal).map(item => (
 								<li key={item}>
-									<button className={styles[""]}
+									<Button
+										styleClasses="btn-metal"
 										id={item}
-										onClick={handleSetCurrentMetal}
-									>
-										{t(`kindMetal.${item}`)}
-									</button>
+										text={t(`kindMetal.${item}`)}
+										handleClick={handleSetCurrentMetal}
+									/>
 								</li>
 							))}
 						</ul>
 					</nav>
 
-					<div className={styles[""]}>
-						<div className={styles[""]}>
-							<h4 className={styles[""]}>
-								{t('Параметры расчёта')}:
-							</h4>
+					<div className={styles["container-result"]}>
+						<h2 className={styles["result__title"]}>
+							{t('Параметры расчёта')}:
+						</h2>
 
-							<div className={styles[""]}>
-								<span className={styles[""]}>
+						<div className={styles["params"]}>
+							<p>
+								<span className={styles["params-item"]}>
 									{t('изделие')}:{" "}
 								</span>
 								{currentProduct ? (
-									<span className={styles[""]}>
+									<span className={styles["params-chosen"]}>
 										{t(`kindProduct.${currentProduct}`)}
 									</span>
 								) : (
-									<span className={styles[""]}>
+									<span className={styles["params-blank"]}>
 										{t('не выбрано')}
 									</span>
 								)}
-							</div>
-							<div className={styles[""]}>
-								<span className={styles[""]}>
+							</p>
+							<p>
+								<span className={styles["params-item"]}>
 									{t('материал')}:{" "}
 								</span>
 								{currentMetal ? (
-									<span className={styles[""]}>
+									<span className={styles["params-chosen"]}>
 										{t(`kindMetal.${currentMetal}`)}
 									</span>
 								) : (
-									<span className={styles[""]}>
+									<span className={styles["params-blank"]}>
 										{t('не выбрано')}
 									</span>
 								)}
-							</div>
-
-							<div className={styles[""]}>
-								{/* <FormCalculator
-									productKind={currentProduct}
-									productMetal={currentMetal}
-								/> */}
-								---Form calculator---
-							</div>
-
+							</p>
 						</div>
+
+						<FormCalculator
+							productKind={currentProduct}
+							productMetal={currentMetal}
+						/>
 					</div>
+				</section>
+			</main>
 
-				</div>
-			</div>
-
-			<div className={styles[""]}>
-				<h6 className={styles[""]}>
-					&copy; Dennis Polukaroff, 2023
-				</h6>
-				<a
-					href="https://github.com/denderange/calcmetall1"
-					className={styles[""]}
-				>
-					source on Github
-				</a>
-			</div>
+			<Footer />
 		</div>
 	)
 }

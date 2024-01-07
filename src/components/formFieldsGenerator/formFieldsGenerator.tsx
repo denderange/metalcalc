@@ -307,9 +307,9 @@ export const formFieldGenerator = (productKind: string, errors: any, register: a
 
 		default:
 			return (
-				<div className={'text-center text-red-400'}>
+				<h3 className={styles["text-important"]}>
 					{t('Выберите вид проката')}
-				</div>
+				</h3>
 			)
 	}
 }

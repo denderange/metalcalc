@@ -14,9 +14,9 @@ html, body, #root{
 }
 
 body{
-	/* background-color: var(--color-white);
-	font: var(--middle-regular);
-	color: var(--color-river-bed); */
+	font: var(--text-regular);
+	background-color: var(--color-bg);
+	color: var(--color-font);
 }
 
 ul{
@@ -32,18 +32,37 @@ button{
 	border: none;
 	cursor: pointer;
 	background-color: transparent;
+	color: inherit;
 	padding: 0;
 	margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6{
 	margin: 0;
+	padding: 0;
+	font: var(--text-bold);
 }
 
 input:focus{
 	outline: none;
 }
 
-.img{
+img{
 	max-width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+  margin: 0;
+}
+ 
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.wrapper{
+	width: max-content;
+	margin: 0 auto;
+	padding: 0 8px;
 }
