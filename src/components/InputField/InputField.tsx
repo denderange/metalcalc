@@ -1,5 +1,7 @@
-import styles from './InputField.module.css'
 import { useTranslation } from 'react-i18next'
+import type { RootState } from '../../store/store'
+import { useSelector } from 'react-redux'
+import styles from './InputField.module.css'
 
 type Props = {
 	name: string,
@@ -11,6 +13,7 @@ type Props = {
 
 const InputField = ({ name, label, register, errors, type }: Props) => {
 	const { t } = useTranslation()
+	const metric = useSelector((state: RootState) => state.appState.demensions)
 
 	return (
 		<div className={styles["param-input-container"]}>
@@ -34,7 +37,10 @@ const InputField = ({ name, label, register, errors, type }: Props) => {
 				className={`${errors[name] ? styles["input-error"] : null} ${styles["param-input"]}`}
 			/>
 			<span className={styles["param-input-span"]}>
-				{name !== 'quantity' ? `${t('мм')}` : `${t('шт')}`}
+				{name !== 'quantity' ?
+					(metric === "millimeters" ? `${t('мм')}` : "in") :
+					`${t('шт')}`
+				}
 			</span>
 		</div>
 	)

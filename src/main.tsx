@@ -5,9 +5,11 @@ import './normalize.css'
 import './theme.css'
 import './index.css'
 import './i18n'
+import { store } from './store/store.ts'
+import { Provider } from 'react-redux'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-	<React.StrictMode>
+	<Provider store={store}>
 		<App />
-	</React.StrictMode>,
+	</Provider>,
 )

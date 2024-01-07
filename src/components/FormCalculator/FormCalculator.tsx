@@ -39,11 +39,7 @@ const FormCalculator = ({ productKind, productMetal }: Props) => {
 	} = useForm<formValues>()
 
 	const onSubmit = handleSubmit((data) => {
-		console.log(productKind);
-		console.log(data);
 		const calculations: any = applyFormulas(productKind, productMetal, data)
-		console.log(calculations);
-
 
 		if (calculations) {
 			setTheResult(calculations)

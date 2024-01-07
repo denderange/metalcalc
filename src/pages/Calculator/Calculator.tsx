@@ -2,20 +2,24 @@ import { useState, MouseEvent } from 'react'
 import Footer from '../../components/Footer/Footer'
 import Button from '../../components/Button/Button'
 import FormCalculator from '../../components/FormCalculator/FormCalculator'
-import { catalogue } from '../../utils/catalogue'
-import product from '../../locales/ru.json'
-import { useTranslation } from 'react-i18next'
-import styles from './Calculator.module.css'
 import SwitchDemensions from '../../components/SwitchDemensions/SwitchDemensions'
+import { catalogue } from '../../utils/catalogue'
+import { useTranslation } from 'react-i18next'
+import product from '../../locales/ru.json'
+import styles from './Calculator.module.css'
+import type { RootState } from '../../store/store'
+import { useSelector, useDispatch } from 'react-redux'
+import { switchProduct, switchMetal } from '../../store/appStateSlice'
 
 const Calculator = () => {
 	const { t, i18n } = useTranslation()
 	const [language, setLanguage] = useState('en')
-	const [currentProduct, setCurrentProduct] = useState('')
-	const [currentMetal, setCurrentMetal] = useState('')
-	const [checked, setChecked] = useState("millimeters");
+
+	const currentProduct = useSelector((state: RootState) => state.appState.product)
+	const currentMetal = useSelector((state: RootState) => state.appState.metal)
+	const dispatch = useDispatch()
+
 	const [imgLink, setImgLink] = useState<string>(catalogue['imgDefault'].image)
-	const amountMetalKind: number = Object.keys(product.kindMetal).length
 
 	const handleSwitchLanguage = (lang: string): void => {
 		switch (lang) {
@@ -32,7 +36,7 @@ const Calculator = () => {
 
 	const handleSetCurrentProduct = (e: MouseEvent<HTMLButtonElement>): void => {
 		setImgLink(catalogue[e.currentTarget.id].image)
-		setCurrentProduct(e.currentTarget.id)
+		dispatch(switchProduct(e.currentTarget.id))
 
 		const activeProduct: (HTMLElement | null) = document.getElementById(currentProduct)
 		activeProduct?.classList.remove('btn-product-active')
@@ -40,7 +44,7 @@ const Calculator = () => {
 	}
 
 	const handleSetCurrentMetal = (e: MouseEvent<HTMLButtonElement>): void => {
-		setCurrentMetal(e.currentTarget.id)
+		dispatch(switchMetal(e.currentTarget.id))
 
 		const activeMetal: (HTMLElement | null) = document.getElementById(currentMetal)
 		activeMetal?.classList.remove('btn-metal-active')

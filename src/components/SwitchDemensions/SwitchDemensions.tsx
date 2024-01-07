@@ -1,13 +1,16 @@
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import type { RootState } from '../../store/store'
+import { useSelector, useDispatch } from 'react-redux'
+import { switchDemension } from '../../store/appStateSlice'
 import styles from './SwitchDemensions.module.css'
 
 const SwitchDemensions = () => {
-	const [metric, setMetric] = useState(true)
+	const metric = useSelector((state: RootState) => state.appState.demensions)
+	const dispatch = useDispatch()
 	const { t, i18n } = useTranslation()
 
 	const switchDemensions = () => {
-		setMetric(!metric)
+		metric === 'millimeters' ? dispatch(switchDemension(false)) : dispatch(switchDemension(true))
 	}
 
 	return (
@@ -18,10 +21,10 @@ const SwitchDemensions = () => {
 					onChange={switchDemensions}
 					className={styles["switch-input"]}
 				/>
-				<span className={`${styles["switch-span"]} ${metric && styles["switch-span--active"]}`}>
+				<span className={`${styles["switch-span"]} ${metric === "millimeters" && styles["switch-span--active"]}`}>
 					{t('миллиметры')}
 				</span>
-				<span className={`${styles["switch-span"]} ${!metric && styles["switch-span--active"]}`}>
+				<span className={`${styles["switch-span"]} ${metric === "inches" && styles["switch-span--active"]}`}>
 					{t('дюймы')}
 				</span>
 			</label>
